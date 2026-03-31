@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kiimakeppi Pro - HARE WARE</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="menu-layer">
+        <h1>KIIMAKEPPI PRO</h1>
+        <p>Valitse vaikeustaso!</p>
+        <div class="level-grid" id="l-grid"></div>
+    </div>
+
+    <div id="fail-screen">
+        <div class="horror-container" id="drip-target">
+            <div class="horror-text" id="fail-msg">JÄIT KIINNI!</div>
+        </div>
+        <button onclick="location.reload()" style="margin-top: 30px; padding: 15px 30px; font-size: 1.2rem; cursor:pointer; background: #fff; border:none; border-radius:10px;">Yritä uudelleen</button>
+    </div>
+
+    <div id="win-screen">
+        <div class="win-text">MAHTAVAA!</div>
+        <p>KULTAINEN KOSKETUS</p>
+    </div>
+
+    <div id="hud">KIIMA: <span id="c-val">0</span>%</div>
+
+    <div id="horror-center">
+        <div id="door-frame">
+            <div id="grandma"></div>
+            <div id="door"></div>
+        </div>
+    </div>
+
+    <div id="kikkeli-wrap">
+        <div id="glans"></div>
+        <div id="shaft"></div>
+        <div id="scrotum">
+            <div class="ball" id="b1"></div>
+            <div class="ball" id="b2"></div>
+        </div>
+    </div>
+
+    <div id="rpm-gui"><div id="needle"></div></div>
+
+    <script src="./js/game.js"></script>
+</body>
+</html>
