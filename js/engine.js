@@ -30,6 +30,11 @@ for (let i = 1; i <= 10; i++) {
 function startGame(t) {
     taso = t; charge = 0; grandma = 0; rpm = 0; momentum = 0;
     document.getElementById('render-area').innerHTML = '';
+    
+    const vieraat = ['👵', '👽', '👧', '👩', '🐕', '🧔', '👮', '🧛', '🤡', '🐱', '🐗'];
+    const satunnainenVieras = vieraat[Math.floor(Math.random() * vieraat.length)];
+    document.getElementById('grandma').innerText = satunnainenVieras;
+
     modes[gameMode].init();
     document.getElementById('menu-layer').style.display = 'none';
     active = true;
