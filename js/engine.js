@@ -68,7 +68,8 @@ setInterval(() => {
     grandma = Math.max(0, grandma);
 
     const doorAngle = Math.min(110, (grandma / 100) * 110);
-    document.getElementById('door').style.transform = `rotateY(-${doorAngle}deg)`;
+    const dElem = document.getElementById('door');
+    if(dElem) dElem.style.transform = `rotateY(-${doorAngle}deg)`;
     
     const w = document.getElementById('warning-text');
     if (grandma > 20 && grandma < 100) {

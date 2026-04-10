@@ -13,6 +13,7 @@ function initKeppi() {
 
 function updateKeppi(c, r) {
     const s = document.getElementById('shaft');
+    if(!s) return;
     const n = Math.floor(c / 8);
     while(s.children.length < n) {
         let b = document.createElement('div');
@@ -22,8 +23,10 @@ function updateKeppi(c, r) {
     while(s.children.length > n) s.removeChild(s.lastChild);
     
     const v = Math.sin(Date.now()/90) * (r/12);
-    document.getElementById('b1').style.transform = `translateY(${v}px)`;
-    document.getElementById('b2').style.transform = `translateY(${-v}px)`;
+    const b1 = document.getElementById('b1');
+    const b2 = document.getElementById('b2');
+    if(b1) b1.style.transform = `translateY(${v}px)`;
+    if(b2) b2.style.transform = `translateY(${-v}px)`;
 }
 
 function winKeppi() {

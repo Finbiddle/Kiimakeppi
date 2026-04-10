@@ -16,6 +16,7 @@ function updateSimpukka(c, r) {
     const clit = document.getElementById('clit');
     const glow = document.getElementById('glow');
     const main = document.getElementById('s-main');
+    if(!inner || !clit || !glow || !main) return;
     
     const intensity = Math.min(1, r / 150);
     const progress = c / 100;
@@ -67,7 +68,8 @@ function createSteamFX() {
 function winSimpukka() {
     active = false;
     document.getElementById('win-screen').style.display = 'flex';
-    document.querySelector('.win-text').innerText = "TÄYSI KOSTEUS!";
+    const wt = document.querySelector('.win-text');
+    if(wt) wt.innerText = "TÄYSI KOSTEUS!";
     for(let i=0; i<150; i++) {
         setTimeout(createMoisture, i * 20);
     }
