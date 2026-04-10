@@ -68,10 +68,7 @@ function createSteamFX() {
 function winSimpukka() {
     active = false;
     document.getElementById('win-screen').style.display = 'flex';
-    const wt = document.querySelector('.win-text');
-    if(wt) wt.innerText = "TÄYSI KOSTEUS!";
     for(let i=0; i<150; i++) {
         setTimeout(createMoisture, i * 20);
     }
-    setTimeout(() => location.reload(), 5000);
 }

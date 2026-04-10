@@ -3,50 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kiimakeppi PRO + Simpukka</title>
+    <title>Kiimakeppi PRO</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="menu-layer">
-        <h1>Valitse peli!</h1>
+        <button id="lang-btn" onclick="toggleLanguage()"></button>
+        <h1 id="txt-title"></h1>
         <div id="mode-select">
-            <button class="mode-btn" onclick="selectMode('keppi')">KIIMAKEPPI</button>
-            <button class="mode-btn" onclick="selectMode('simpukka')">SIMPUKKA</button>
+            <button class="mode-btn" onclick="selectMode('keppi')" id="txt-keppi"></button>
+            <button class="mode-btn" onclick="selectMode('simpukka')" id="txt-simpukka"></button>
         </div>
         <div id="level-selection" style="visibility: hidden;">
-            <p>Valitse vaikeustaso</p>
+            <p id="txt-lv"></p>
             <div class="level-grid" id="l-grid"></div>
         </div>
-        <button id="info-btn" onclick="toggleInfo(true)">OHJEET</button>
-        <a href="https://www.buymeacoffee.com/finbiddle" target="_blank" class="coffee-link">☕ Tarjoa kahvit</a>
+        <button class="mode-btn" onclick="toggleInfo(true)" id="txt-info-btn"></button>
+        <a href="https://www.buymeacoffee.com/finbiddle" target="_blank" class="coffee-link" id="txt-coffee"></a>
     </div>
 
     <div id="info-modal">
         <div class="info-content">
-            <h2 id="info-title">NÄIN PELATAAN</h2>
+            <h2 id="txt-info-title"></h2>
             <ul id="info-list"></ul>
-            <button class="close-btn" onclick="toggleInfo(false)">SELVÄ!</button>
+            <button class="close-btn" onclick="toggleInfo(false)" id="txt-close"></button>
         </div>
     </div>
 
     <div id="fail-screen">
         <div class="horror-container">
-            <div class="horror-text">KIINNI JÄIT!</div>
+            <div class="horror-text" id="txt-fail"></div>
         </div>
-        <button onclick="location.reload()" class="retry-btn">ALKUUN</button>
+        <button onclick="location.reload()" class="retry-btn" id="txt-retry"></button>
     </div>
 
     <div id="win-screen">
-        <div class="win-text">MAHTAVAA!</div>
-        <a href="https://www.buymeacoffee.com/finbiddle" target="_blank" class="coffee-link win-coffee">☕ Tarjoa voittokahvit!</a>
-        <button onclick="location.reload()" class="retry-btn">UUSI PELI</button>
+        <div class="win-text" id="txt-win"></div>
+        <a href="https://www.buymeacoffee.com/finbiddle" target="_blank" class="coffee-link win-coffee" id="txt-win-coffee"></a>
+        <button onclick="location.reload()" class="retry-btn" id="txt-new"></button>
     </div>
     
-    <div id="hud"><span id="hud-label">LATAUS</span>: <span id="c-val">0</span>%</div>
+    <div id="hud"><span id="hud-label"></span>: <span id="c-val">0</span>%</div>
 
     <div id="game-container">
         <div id="door-frame">
-            <div id="warning-text">JOKU ON TULOSSA...</div>
+            <div id="warning-text"></div>
             <div id="grandma"></div>
             <div id="door"></div>
         </div>

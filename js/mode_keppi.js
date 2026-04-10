@@ -68,5 +68,4 @@ function winKeppi() {
             }
         }, wave * 250);
     }
-    setTimeout(() => { location.reload(); }, 6000);
 }
