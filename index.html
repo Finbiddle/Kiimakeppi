@@ -17,7 +17,7 @@
         <div class="horror-container" id="drip-target">
             <div class="horror-text" id="fail-msg">JÄIT KIINNI!</div>
         </div>
-        <button onclick="location.reload()" style="margin-top: 30px; padding: 15px 30px; font-size: 1.2rem; cursor:pointer; background: #fff; border:none; border-radius:10px;">Yritä uudelleen</button>
+        <button onclick="location.reload()" class="retry-btn">Yritä uudelleen</button>
     </div>
 
     <div id="win-screen">
@@ -27,19 +27,20 @@
 
     <div id="hud">KIIMA: <span id="c-val">0</span>%</div>
 
-    <div id="horror-center">
+    <div id="game-container">
         <div id="door-frame">
+            <div id="warning-text">JOKU LÄHESTYY...</div>
             <div id="grandma"></div>
             <div id="door"></div>
         </div>
-    </div>
 
-    <div id="kikkeli-wrap">
-        <div id="glans"></div>
-        <div id="shaft"></div>
-        <div id="scrotum">
-            <div class="ball" id="b1"></div>
-            <div class="ball" id="b2"></div>
+        <div id="kikkeli-wrap">
+            <div id="glans"></div>
+            <div id="shaft"></div>
+            <div id="scrotum">
+                <div class="ball" id="b1"></div>
+                <div class="ball" id="b2"></div>
+            </div>
         </div>
     </div>
 

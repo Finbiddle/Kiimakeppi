@@ -16,6 +16,8 @@ for(let i=1; i<=10; i++) {
     grid.appendChild(b);
 }
 
+const kikkeli = document.getElementById('kikkeli-wrap');
+
 function startGame(valittuTaso) {
     taso = valittuTaso;
     let u = uhat[Math.floor(Math.random() * uhat.length)];
@@ -27,17 +29,23 @@ function startGame(valittuTaso) {
 
 function handleInput(x, y) {
     if(!active) return;
+    if(lastX === 0 && lastY === 0) { lastX = x; lastY = y; return; }
     let d = Math.sqrt(Math.pow(x - lastX, 2) + Math.pow(y - lastY, 2));
+    if(d > 100) d = 0;
     lastX = x; lastY = y;
     momentum += d * 0.8;
     if(momentum > 180) momentum = 180;
 }
 
-window.onmousemove = (e) => handleInput(e.clientX, e.clientY);
-window.ontouchmove = (e) => {
+kikkeli.addEventListener('mousemove', (e) => handleInput(e.clientX, e.clientY));
+kikkeli.addEventListener('touchmove', (e) => {
     handleInput(e.touches[0].clientX, e.touches[0].clientY);
     e.preventDefault();
-};
+}, { passive: false });
+
+const resetCoord = () => { lastX = 0; lastY = 0; };
+kikkeli.addEventListener('mouseleave', resetCoord);
+kikkeli.addEventListener('touchend', resetCoord);
 
 setInterval(() => {
     if(!active) return;
@@ -55,6 +63,27 @@ setInterval(() => {
     grandma = Math.max(0, grandma);
 
     document.getElementById('door').style.transform = `rotateY(-${Math.min(110, (grandma/100)*110)}deg)`;
+    
+    const warning = document.getElementById('warning-text');
+    if (grandma > 20 && grandma < 100) {
+        warning.style.opacity = "1";
+        warning.classList.add('blink');
+    } else {
+        warning.style.opacity = "0";
+        warning.classList.remove('blink');
+    }
+
+    const needle = document.getElementById('needle');
+    needle.style.transform = `rotate(${-90 + rpm}deg)`;
+
+    if (rpm > 70 && rpm < 140) {
+        needle.style.boxShadow = "0 0 10px #0f0";
+        needle.style.background = "#0f0";
+    } else {
+        needle.style.boxShadow = "none";
+        needle.style.background = "#f00";
+    }
+
     if(grandma > 40) document.getElementById('grandma').style.filter = `brightness(${grandma/100})`;
 
     if(grandma >= 100) {
@@ -104,24 +133,15 @@ function triggerWin() {
                 p.style.width = size + 'px';
                 p.style.height = size + 'px';
                 document.body.appendChild(p);
-
                 let vx = (Math.random() - 0.5) * 25; 
                 let vy = -Math.random() * 35 - 15;
                 let opacity = 1;
-                let posX = startX;
-                let posY = startY;
-
+                let posX = startX, posY = startY;
                 const anim = setInterval(() => {
-                    vy += 1.8;
-                    posX += vx;
-                    posY += vy;
-                    opacity -= 0.02;
+                    vy += 1.8; posX += vx; posY += vy; opacity -= 0.02;
                     p.style.transform = `translate(${posX - startX}px, ${posY - startY}px)`;
                     p.style.opacity = opacity;
-                    if (opacity <= 0) {
-                        clearInterval(anim);
-                        p.remove();
-                    }
+                    if (opacity <= 0) { clearInterval(anim); p.remove(); }
                 }, 25);
             }
         }, wave * 250);
