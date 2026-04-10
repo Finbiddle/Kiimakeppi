@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kiimakeppi Pro - HARE WARE</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div id="menu-layer">
         <h1>KIIMAKEPPI PRO</h1>
         <p>Valitse vaikeustaso!</p>
         <div class="level-grid" id="l-grid"></div>
-        
         <button id="info-btn" onclick="toggleInfo(true)">OHJEET</button>
-
         <div id="info-modal">
             <div class="info-content">
                 <h2>NÄIN PELATAAN</h2>
                 <ul>
-                    <li><strong>HINKKAA:</strong> Liikuta hiirtä tai sormea edestakaisin kiimakepin päällä.</li>
-                    <li><strong>SWEET SPOT:</strong> Yritä pitää neula vihreällä alueella.</li>
-                    <li><strong>VARO:</strong> Jos ovi aukeaa tai teksti vilkkuu, keskeytä hinkkaaminen!</li>
-                    <li><strong>VOITA:</strong> Täytä KIIMA-mittari 100% jäämättä kiinni.</li>
+                    <li><strong>HINKKAA:</strong> Liikuta hiirtä tai sormea kiimakepin päällä.</li>
+                    <li><strong>VIHREÄ VYÖHYKE:</strong> Optimaalinen tahti. Pysyt jopa huomaamattomana!
+                    </li>
+                    <li><strong>ORANSSI VYÖHYKE:</strong> Tahti hiipuu. Olet epävakaalla alueella.</li>
+                    <li><strong>PUNAINEN VYÖHYKE:</strong> Liikaa melua! Huomio kiinnittyy sinuun välittömästi.</li>
+                    <li><strong>VARO:</strong> Jos ovi raottuu tai vaisto varoittaa, lopeta kaikki liike heti.</li>
                 </ul>
                 <button class="close-btn" onclick="toggleInfo(false)">SELVÄ!</button>
             </div>
@@ -65,4 +67,5 @@
 
     <script src="./js/game.js"></script>
 </body>
+
 </html>
