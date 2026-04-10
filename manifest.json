@@ -13,7 +13,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "index.html",
+  "start_url": "/Kiimakeppi/",
+  "scope": "/Kiimakeppi/",
   "background_color": "#050505",
   "display": "standalone",
   "theme_color": "#00ff00",
