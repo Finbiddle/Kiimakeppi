@@ -1,71 +1,53 @@
 <!DOCTYPE html>
 <html lang="fi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kiimakeppi Pro - HARE WARE</title>
+    <title>HARE WARE MULTIGAME</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
     <div id="menu-layer">
-        <h1>KIIMAKEPPI PRO</h1>
-        <p>Valitse vaikeustaso!</p>
+        <h1>Valitse pelimuoto ja vaikeustaso</h1>
+        <div id="mode-select">
+            <button class="mode-btn active" onclick="switchMode('keppi')">KIIMAKEPPI PRO</button>
+            <button class="mode-btn" onclick="switchMode('simpukka')">SIMPUKKA</button>
+        </div>
         <div class="level-grid" id="l-grid"></div>
         <button id="info-btn" onclick="toggleInfo(true)">OHJEET</button>
-        <div id="info-modal">
-            <div class="info-content">
-                <h2>NÄIN PELATAAN</h2>
-                <ul>
-                    <li><strong>HINKKAA:</strong> Liikuta hiirtä tai sormea kiimakepin päällä.</li>
-                    <li><strong>VIHREÄ VYÖHYKE:</strong> Optimaalinen tahti. Pysyt jopa huomaamattomana!
-                    </li>
-                    <li><strong>ORANSSI VYÖHYKE:</strong> Tahti hiipuu. Olet epävakaalla alueella.</li>
-                    <li><strong>PUNAINEN VYÖHYKE:</strong> Liikaa melua! Huomio kiinnittyy sinuun välittömästi.</li>
-                    <li><strong>VARO:</strong> Jos ovi raottuu tai vaisto varoittaa, lopeta kaikki liike heti.</li>
-                </ul>
-                <button class="close-btn" onclick="toggleInfo(false)">SELVÄ!</button>
-            </div>
+    </div>
+
+    <div id="info-modal">
+        <div class="info-content">
+            <h2 id="info-title">NÄIN PELATAAN</h2>
+            <ul id="info-list"></ul>
+            <button class="close-btn" onclick="toggleInfo(false)">SELVÄ!</button>
         </div>
     </div>
 
     <div id="fail-screen">
         <div class="horror-container" id="drip-target">
-            <div class="horror-text" id="fail-msg">JÄIT KIINNI!</div>
+            <div class="horror-text" id="fail-msg">KIINNI JÄIT!</div>
         </div>
-        <button onclick="location.reload()" class="retry-btn">Yritä uudelleen</button>
+        <button onclick="location.reload()" class="retry-btn">ALKUUN</button>
     </div>
 
-    <div id="win-screen">
-        <div class="win-text">MAHTAVAA!</div>
-        <p>KULTAINEN KOSKETUS</p>
-    </div>
-
-    <div id="hud">KIIMA: <span id="c-val">0</span>%</div>
+    <div id="win-screen"><div class="win-text">MAHTAVAA!</div></div>
+    <div id="hud"><span id="hud-label">KIIMA</span>: <span id="c-val">0</span>%</div>
 
     <div id="game-container">
         <div id="door-frame">
-            <div id="warning-text">JOKU LÄHESTYY...</div>
+            <div id="warning-text">VAISTO VAROITTAA...</div>
             <div id="grandma"></div>
             <div id="door"></div>
         </div>
-
-        <div id="kikkeli-wrap">
-            <div id="glans"></div>
-            <div id="shaft"></div>
-            <div id="scrotum">
-                <div class="ball" id="b1"></div>
-                <div class="ball" id="b2"></div>
-            </div>
-        </div>
+        <div id="render-area"></div>
     </div>
 
-    <div id="rpm-gui">
-        <div id="needle"></div>
-    </div>
+    <div id="rpm-gui"><div id="needle"></div></div>
 
-    <script src="./js/game.js"></script>
+    <script src="./js/mode_keppi.js"></script>
+    <script src="./js/mode_simpukka.js"></script>
+    <script src="./js/engine.js"></script>
 </body>
-
 </html>
