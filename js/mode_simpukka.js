@@ -20,21 +20,17 @@ function updateSimpukka(c, r) {
     const intensity = Math.min(1, r / 150);
     const progress = c / 100;
 
-    // Värin muutos ja hohde
     inner.style.background = `rgb(255, ${112 - intensity * 60}, ${112 - intensity * 60})`;
     glow.style.opacity = intensity;
     
-    // Sykkiminen ja lämpöaalto
     main.style.transform = `scale(${1 + progress * 0.15})`;
     if (progress > 0.5) {
         main.classList.add('heat-wave');
     }
 
-    // Tärinä
     const shake = (r > 120) ? (Math.random() * 6 - 3) : 0;
     clit.style.transform = `translateX(calc(-50% + ${shake}px)) scale(${1 + intensity * 0.4})`;
 
-    // Tehosteiden luonti (pisarat ja höyry)
     if (active && r > 40 && Math.random() > 0.92) {
         createMoisture();
     }
@@ -45,6 +41,7 @@ function updateSimpukka(c, r) {
 
 function createMoisture() {
     const layer = document.getElementById('fx-layer');
+    if(!layer) return;
     const d = document.createElement('div');
     d.className = 's-moisture';
     const size = Math.random() * 6 + 2;
@@ -58,6 +55,7 @@ function createMoisture() {
 
 function createSteamFX() {
     const layer = document.getElementById('fx-layer');
+    if(!layer) return;
     const s = document.createElement('div');
     s.className = 's-steam';
     s.style.left = (Math.random() * 40 + 30) + "%";
@@ -70,11 +68,8 @@ function winSimpukka() {
     active = false;
     document.getElementById('win-screen').style.display = 'flex';
     document.querySelector('.win-text').innerText = "TÄYSI KOSTEUS!";
-    
-    // Voitto-animaatio: Tulva
     for(let i=0; i<150; i++) {
         setTimeout(createMoisture, i * 20);
     }
-    
     setTimeout(() => location.reload(), 5000);
 }

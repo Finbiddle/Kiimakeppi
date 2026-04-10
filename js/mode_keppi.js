@@ -1,20 +1,26 @@
 function initKeppi() {
     const area = document.getElementById('render-area');
-    area.innerHTML = `<div class="k-wrap">
-        <div class="k-glans" id="glans"></div>
-        <div id="shaft" style="display:flex; flex-direction:column-reverse;"></div>
-        <div class="k-ball-row">
-            <div class="k-ball" id="b1"></div>
-            <div class="k-ball" id="b2"></div>
-        </div>
-    </div>`;
+    area.innerHTML = `
+        <div class="k-wrap">
+            <div class="k-glans" id="glans"></div>
+            <div id="shaft" style="display:flex; flex-direction:column-reverse;"></div>
+            <div class="k-ball-row">
+                <div class="k-ball" id="b1"></div>
+                <div class="k-ball" id="b2"></div>
+            </div>
+        </div>`;
 }
 
 function updateKeppi(c, r) {
     const s = document.getElementById('shaft');
     const n = Math.floor(c / 8);
-    while(s.children.length < n) s.appendChild(Object.assign(document.createElement('div'),{className:'k-block'}));
+    while(s.children.length < n) {
+        let b = document.createElement('div');
+        b.className = 'k-block';
+        s.appendChild(b);
+    }
     while(s.children.length > n) s.removeChild(s.lastChild);
+    
     const v = Math.sin(Date.now()/90) * (r/12);
     document.getElementById('b1').style.transform = `translateY(${v}px)`;
     document.getElementById('b2').style.transform = `translateY(${-v}px)`;

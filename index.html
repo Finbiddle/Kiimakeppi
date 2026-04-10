@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HARE WARE MULTIGAME</title>
+    <title>HARE WARE</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div id="menu-layer">
-        <h1>Valitse pelimuoto ja vaikeustaso</h1>
+        <h1>HARE WARE</h1>
         <div id="mode-select">
-            <button class="mode-btn active" onclick="switchMode('keppi')">KIIMAKEPPI PRO</button>
-            <button class="mode-btn" onclick="switchMode('simpukka')">SIMPUKKA</button>
+            <button class="mode-btn" onclick="selectMode('keppi')">KEPPI</button>
+            <button class="mode-btn" onclick="selectMode('simpukka')">SIMPUKKA</button>
         </div>
-        <div class="level-grid" id="l-grid"></div>
+        <div id="level-selection" style="visibility: hidden;">
+            <p>VALITSE VAIKEUSTASO</p>
+            <div class="level-grid" id="l-grid"></div>
+        </div>
         <button id="info-btn" onclick="toggleInfo(true)">OHJEET</button>
     </div>
 
@@ -26,19 +29,19 @@
     </div>
 
     <div id="fail-screen">
-        <div class="horror-container" id="drip-target">
-            <div class="horror-text" id="fail-msg">KIINNI JÄIT!</div>
+        <div class="horror-container">
+            <div class="horror-text">KIINNI JÄIT!</div>
         </div>
         <button onclick="location.reload()" class="retry-btn">ALKUUN</button>
     </div>
 
     <div id="win-screen"><div class="win-text">MAHTAVAA!</div></div>
-    <div id="hud"><span id="hud-label">KIIMA</span>: <span id="c-val">0</span>%</div>
+    <div id="hud"><span id="hud-label">LATAUS</span>: <span id="c-val">0</span>%</div>
 
     <div id="game-container">
         <div id="door-frame">
             <div id="warning-text">VAISTO VAROITTAA...</div>
-            <div id="grandma"></div>
+            <div id="grandma">👵</div>
             <div id="door"></div>
         </div>
         <div id="render-area"></div>
