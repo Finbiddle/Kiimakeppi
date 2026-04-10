@@ -18,6 +18,10 @@ for(let i=1; i<=10; i++) {
 
 const kikkeli = document.getElementById('kikkeli-wrap');
 
+function toggleInfo(show) {
+    document.getElementById('info-modal').style.display = show ? 'flex' : 'none';
+}
+
 function startGame(valittuTaso) {
     taso = valittuTaso;
     let u = uhat[Math.floor(Math.random() * uhat.length)];
@@ -73,17 +77,6 @@ setInterval(() => {
         warning.classList.remove('blink');
     }
 
-    const needle = document.getElementById('needle');
-    needle.style.transform = `rotate(${-90 + rpm}deg)`;
-
-    if (rpm > 70 && rpm < 140) {
-        needle.style.boxShadow = "0 0 10px #0f0";
-        needle.style.background = "#0f0";
-    } else {
-        needle.style.boxShadow = "none";
-        needle.style.background = "#f00";
-    }
-
     if(grandma > 40) document.getElementById('grandma').style.filter = `brightness(${grandma/100})`;
 
     if(grandma >= 100) {
@@ -100,7 +93,16 @@ setInterval(() => {
     charge = Math.min(100, Math.max(0, charge - cooldown));
     
     document.getElementById('c-val').innerText = Math.floor(charge);
-    document.getElementById('needle').style.transform = `rotate(${-90 + rpm}deg)`;
+    
+    const needle = document.getElementById('needle');
+    needle.style.transform = `rotate(${-90 + rpm}deg)`;
+    if (rpm > 70 && rpm < 140) {
+        needle.style.background = "#0f0";
+        needle.style.boxShadow = "0 0 10px #0f0";
+    } else {
+        needle.style.background = "#f00";
+        needle.style.boxShadow = "none";
+    }
 
     let shaft = document.getElementById('shaft');
     let n = Math.floor(charge / 8);
@@ -121,7 +123,6 @@ function triggerWin() {
     const rect = glans.getBoundingClientRect();
     const startX = rect.left + rect.width / 2;
     const startY = rect.top;
-
     for (let wave = 0; wave < 10; wave++) {
         setTimeout(() => {
             for (let i = 0; i < 20; i++) {

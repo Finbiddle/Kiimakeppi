@@ -8,7 +8,7 @@
 
 body {
     background: var(--steam-bg);
-    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 30px 30px;
     color: #fff; 
     margin: 0; 
@@ -41,6 +41,47 @@ body {
     font-size: 1.2rem; 
     cursor: pointer; 
     border-radius: 10px;
+}
+
+#info-btn {
+    margin-top: 20px;
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #555;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 5px;
+}
+
+#info-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.info-content {
+    background: #111;
+    border: 2px solid var(--ui-green);
+    padding: 30px;
+    max-width: 80%;
+    border-radius: 15px;
+}
+
+.close-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: var(--ui-green);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 #door-frame { 
@@ -104,10 +145,7 @@ body {
     cursor: crosshair;
 }
 
-#shaft { 
-    display: flex; 
-    flex-direction: column-reverse; 
-}
+#shaft { display: flex; flex-direction: column-reverse; }
 
 .block { 
     width: 90px; 
@@ -136,19 +174,9 @@ body {
     margin: 0 -15px; 
 }
 
-#scrotum { 
-    display: flex; 
-    margin-top: -50px; 
-}
+#scrotum { display: flex; margin-top: -50px; }
 
-#hud { 
-    position: fixed; 
-    top: 15px; 
-    left: 15px; 
-    font-size: 1.2rem; 
-    color: var(--ui-green); 
-    z-index: 100; 
-}
+#hud { position: fixed; top: 15px; left: 15px; font-size: 1.2rem; color: var(--ui-green); z-index: 100; }
 
 #rpm-gui {
     position: fixed; 
@@ -157,26 +185,9 @@ body {
     width: 120px; 
     height: 60px;
     background: #111;
-    background-image: conic-gradient(
-        from 270deg at 50% 100%,
-        #111 0deg,
-        #111 70deg,
-        rgba(0, 255, 0, 0.4) 70deg,
-        rgba(0, 255, 0, 0.4) 140deg,
-        #111 140deg
-    );
+    background-image: conic-gradient(from 270deg at 50% 100%, #111 0deg, #111 70deg, rgba(0, 255, 0, 0.3) 70deg, rgba(0, 255, 0, 0.3) 140deg, #111 140deg);
     border: 2px solid #333; 
     border-radius: 60px 60px 0 0;
-    overflow: hidden;
-}
-
-#rpm-gui::after {
-    content: '';
-    position: absolute;
-    top: 5px; left: 5px; right: 5px; bottom: 0;
-    border-radius: 55px 55px 0 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-    pointer-events: none;
 }
 
 #needle { 
@@ -187,6 +198,7 @@ body {
     bottom: 5px; 
     left: 50%; 
     transform-origin: bottom center; 
+    transition: background 0.2s;
 }
 
 #fail-screen, #win-screen {
@@ -200,59 +212,17 @@ body {
 #fail-screen { background: rgba(30, 0, 0, 0.95); }
 #win-screen { background: rgba(0, 30, 0, 0.8); }
 
-.horror-text, .win-text { 
-    font-size: 2.5rem; 
-    color: #ff0000; 
-    font-weight: 900; 
-    animation: pulse-grow 0.5s infinite alternate; 
-    text-align: center; 
-}
-
+.horror-text, .win-text { font-size: 2.5rem; color: #ff0000; font-weight: 900; animation: pulse-grow 0.5s infinite alternate; text-align: center; }
 .win-text { color: var(--ui-green); }
+.retry-btn { margin-top: 30px; padding: 15px 30px; font-size: 1.2rem; cursor:pointer; background: #fff; border:none; border-radius:10px; }
 
-.retry-btn { 
-    margin-top: 30px; 
-    padding: 15px 30px; 
-    font-size: 1.2rem; 
-    cursor:pointer; 
-    background: #fff; 
-    border:none; 
-    border-radius:10px; 
-}
+@keyframes pulse-grow { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-.drip { 
-    position: absolute; 
-    top: 50%; 
-    width: 10px; 
-    background: var(--blood); 
-    border-radius: 0 0 10px 10px; 
-    animation: drip-anim 4s forwards; 
-}
-
-@keyframes drip-anim { 
-    from { height: 0; } 
-    to { height: 300px; } 
-}
-
-.sperma { 
-    position: absolute; 
-    background: #ffffff; 
-    border-radius: 50%; 
-    box-shadow: 0 0 10px #ffffff; 
-    z-index: 1000; 
-    pointer-events: none; 
-}
+.drip { position: absolute; top: 50%; width: 10px; background: var(--blood); border-radius: 0 0 10px 10px; animation: drip-anim 4s forwards; }
+@keyframes drip-anim { from { height: 0; } to { height: 300px; } }
+.sperma { position: absolute; background: #ffffff; border-radius: 50%; box-shadow: 0 0 10px #ffffff; z-index: 1000; pointer-events: none; }
 
 @media (max-width: 600px) {
-    #door-frame {
-        top: 15%;
-        left: 50%;
-        transform: translateX(-50%) scale(0.85);
-    }
-
-    #kikkeli-wrap {
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%) scale(0.8);
-    }
+    #door-frame { top: 15%; left: 50%; transform: translateX(-50%) scale(0.85); }
+    #kikkeli-wrap { bottom: 5%; left: 50%; transform: translateX(-50%) scale(0.8); }
 }

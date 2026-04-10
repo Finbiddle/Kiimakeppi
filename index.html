@@ -11,6 +11,21 @@
         <h1>KIIMAKEPPI PRO</h1>
         <p>Valitse vaikeustaso!</p>
         <div class="level-grid" id="l-grid"></div>
+        
+        <button id="info-btn" onclick="toggleInfo(true)">OHJEET</button>
+
+        <div id="info-modal">
+            <div class="info-content">
+                <h2>NÄIN PELATAAN</h2>
+                <ul>
+                    <li><strong>HINKKAA:</strong> Liikuta hiirtä tai sormea edestakaisin kiimakepin päällä.</li>
+                    <li><strong>SWEET SPOT:</strong> Yritä pitää neula vihreällä alueella.</li>
+                    <li><strong>VARO:</strong> Jos ovi aukeaa tai teksti vilkkuu, keskeytä hinkkaaminen!</li>
+                    <li><strong>VOITA:</strong> Täytä KIIMA-mittari 100% jäämättä kiinni.</li>
+                </ul>
+                <button class="close-btn" onclick="toggleInfo(false)">SELVÄ!</button>
+            </div>
+        </div>
     </div>
 
     <div id="fail-screen">
@@ -44,7 +59,9 @@
         </div>
     </div>
 
-    <div id="rpm-gui"><div id="needle"></div></div>
+    <div id="rpm-gui">
+        <div id="needle"></div>
+    </div>
 
     <script src="./js/game.js"></script>
 </body>
