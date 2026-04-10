@@ -153,3 +153,19 @@ body {
     from { filter: hue-rotate(0deg) saturate(1); }
     to { filter: hue-rotate(10deg) saturate(1.5); }
 }
+
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+html, body {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
