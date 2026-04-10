@@ -7,7 +7,7 @@ const modes = {
     },
     simpukka: {
         label: 'KOSTEUS', init: initSimpukka, update: updateSimpukka, win: winSimpukka, 
-        info: ['HINKKAA: Pidä tahti tasaisena.', 'VARO: Mummo kuulee kovan loiskinnan.', 'VOITTO: Kastele koko ruutu.']
+        info: ['HINKKAA: Pidä tahti tasaisena.', 'VARO: Joku saattaa kuulla kovan loiskinnan.', 'VOITTO: Kastele koko ruutu.']
     }
 };
 
