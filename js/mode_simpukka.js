@@ -32,10 +32,10 @@ function updateSimpukka(c, r) {
     const shake = (r > 120) ? (Math.random() * 6 - 3) : 0;
     clit.style.transform = `translateX(calc(-50% + ${shake}px)) scale(${1 + intensity * 0.4})`;
 
-    if (active && r > 40 && Math.random() > 0.92) {
+    if (active && r > 25 && Math.random() > 0.92) {
         createMoisture();
     }
-    if (active && c > 60 && Math.random() > 0.85) {
+    if (active && c > 55 && Math.random() > 0.85) {
         createSteamFX();
     }
 }
